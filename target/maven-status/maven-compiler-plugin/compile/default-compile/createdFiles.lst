@@ -1,0 +1,13 @@
+com\nittodigital\webservice\models\soap\production\Production.class
+com\nittodigital\webservice\endpoints\ProductionEndpoint.class
+com\nittodigital\webservice\models\soap\production\ProductionModel.class
+com\nittodigital\webservice\models\soap\production\ObjectFactory.class
+com\nittodigital\webservice\businesslogic\MQTTProductionCounter.class
+com\nittodigital\webservice\models\soap\production\GetProductionRequest.class
+com\nittodigital\webservice\models\soap\production\package-info.class
+com\nittodigital\webservice\repository\ProductionRepository.class
+com\nittodigital\webservice\models\soap\production\GetProductionResponse.class
+com\nittodigital\webservice\ServletInitializer.class
+com\nittodigital\webservice\ProductionCounterApplication.class
+com\nittodigital\webservice\config\WebServiceConfig.class
+com\nittodigital\webservice\repository\iProductionRepository.class

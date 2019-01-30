@@ -1,0 +1,11 @@
+-------------------------------------------------------------------------------
+Test set: com.nittodigital.webservice.productioncounter.ProductionCounterApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 4.787 s <<< FAILURE! - in com.nittodigital.webservice.productioncounter.ProductionCounterApplicationTests
+contextLoads(com.nittodigital.webservice.productioncounter.ProductionCounterApplicationTests)  Time elapsed: 0.005 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'productionEndpoint' defined in file [C:\Users\Nitto\Downloads\production-counter\target\classes\com\nittodigital\webservice\endpoints\ProductionEndpoint.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'productionRepository': Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Error occurred validating the Criteria
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'productionRepository': Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Error occurred validating the Criteria
+Caused by: java.lang.IllegalArgumentException: Error occurred validating the Criteria
+Caused by: java.lang.IllegalStateException: No criteria query roots were specified
+

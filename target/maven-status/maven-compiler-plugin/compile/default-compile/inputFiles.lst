@@ -1,0 +1,13 @@
+C:\Users\Nitto\Downloads\production-counter\src\main\java\com\nittodigital\webservice\repository\ProductionRepository.java
+C:\Users\Nitto\Downloads\production-counter\src\main\java\com\nittodigital\webservice\businesslogic\MQTTProductionCounter.java
+C:\Users\Nitto\Downloads\production-counter\src\main\java\com\nittodigital\webservice\repository\iProductionRepository.java
+C:\Users\Nitto\Downloads\production-counter\src\main\java\com\nittodigital\webservice\models\soap\production\GetProductionResponse.java
+C:\Users\Nitto\Downloads\production-counter\src\main\java\com\nittodigital\webservice\config\WebServiceConfig.java
+C:\Users\Nitto\Downloads\production-counter\src\main\java\com\nittodigital\webservice\models\soap\production\GetProductionRequest.java
+C:\Users\Nitto\Downloads\production-counter\src\main\java\com\nittodigital\webservice\models\soap\production\ObjectFactory.java
+C:\Users\Nitto\Downloads\production-counter\src\main\java\com\nittodigital\webservice\models\soap\production\package-info.java
+C:\Users\Nitto\Downloads\production-counter\src\main\java\com\nittodigital\webservice\models\soap\production\ProductionModel.java
+C:\Users\Nitto\Downloads\production-counter\src\main\java\com\nittodigital\webservice\ProductionCounterApplication.java
+C:\Users\Nitto\Downloads\production-counter\src\main\java\com\nittodigital\webservice\ServletInitializer.java
+C:\Users\Nitto\Downloads\production-counter\src\main\java\com\nittodigital\webservice\models\soap\production\Production.java
+C:\Users\Nitto\Downloads\production-counter\src\main\java\com\nittodigital\webservice\endpoints\ProductionEndpoint.java
