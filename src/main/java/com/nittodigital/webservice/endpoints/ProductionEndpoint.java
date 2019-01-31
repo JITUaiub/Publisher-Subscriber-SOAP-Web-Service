@@ -1,7 +1,6 @@
 package com.nittodigital.webservice.endpoints;
 
-import com.nittodigital.webservice.models.soap.production.GetProductionRequest;
-import com.nittodigital.webservice.models.soap.production.GetProductionResponse;
+import com.nittodigital.webservice.models.soap.production.*;
 import com.nittodigital.webservice.repository.ProductionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
@@ -23,10 +22,11 @@ public class ProductionEndpoint {
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getProductionRequest")
     @ResponsePayload
-    public GetProductionResponse getEmployee(@RequestPayload GetProductionRequest request) {
+    public GetProductionResponse getProduction(@RequestPayload GetProductionRequest request) {
         GetProductionResponse response = new GetProductionResponse();
         response.setProduction(productionRepository.findProduction(request.getId()));
 
         return response;
     }
+
 }

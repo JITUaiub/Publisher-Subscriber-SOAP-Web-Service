@@ -1,19 +1,22 @@
 package com.nittodigital.webservice;
 
 import com.nittodigital.webservice.businesslogic.MQTTProductionCounter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableJpaRepositories(basePackages = {"com.nittodigital.webservice.repository", "com.nittodigital.webservice.businesslogic"})
+@EnableJpaRepositories(basePackages = {"com.nittodigital.webservice.repository"})
 public class ProductionCounterApplication {
 
-	public static void main(String[] args) {
+	@Autowired
+	private MQTTProductionCounter mqttProductionCounter;
 
-		SpringApplication.run(ProductionCounterApplication.class, args);
-
-		MQTTProductionCounter mqttProductionCounter = new MQTTProductionCounter("tcp://iot.eclipse.org:1883", "production-counter", "data");
+	@EventListener(ApplicationReadyEvent.class)
+	public void doSomethingAfterStartup() {
 		mqttProductionCounter.mqttSubscriberFetch();
 
 		try{
@@ -21,6 +24,9 @@ public class ProductionCounterApplication {
 		}catch (InterruptedException e){
 			e.printStackTrace();
 		}
+	}
+	public static void main(String[] args) {
+		SpringApplication.run(ProductionCounterApplication.class, args);
 	}
 
 }

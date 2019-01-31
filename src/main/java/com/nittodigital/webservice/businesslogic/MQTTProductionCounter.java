@@ -2,7 +2,6 @@ package com.nittodigital.webservice.businesslogic;
 
 import com.nittodigital.webservice.models.soap.production.ProductionModel;
 import com.nittodigital.webservice.repository.ProductionRepository;
-import com.nittodigital.webservice.repository.iProductionRepository;
 import org.eclipse.paho.client.mqttv3.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -11,24 +10,22 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.concurrent.CountDownLatch;
 
+@Component
 public class MQTTProductionCounter implements MqttCallback {
 
-    private String mqttBroker;
-    private String clientId;
-    private String topic;
+    @Autowired
+    ProductionRepository productionRepository;
+
+    private String mqttBroker = "tcp://iot.eclipse.org:1883";
+    private String clientId = "production-counter";
+    private String topic = "data";
     private CountDownLatch processingFinishedLatch;
 
     private MqttClient client;
 
     private String matchineNo;
     private String cardNo;
-
-    public MQTTProductionCounter(){}
-    public MQTTProductionCounter(String mqttBroker, String clientId, String topic) {
-        this.mqttBroker = mqttBroker;
-        this.clientId = clientId;
-        this.topic = topic;
-    }
+    public MQTTProductionCounter(){mqttSubscriberFetch();}
 
     public void mqttSubscriberFetch(){
         try{
@@ -46,14 +43,11 @@ public class MQTTProductionCounter implements MqttCallback {
     public void messageArrived(String topic, MqttMessage message) throws Exception {
         System.out.println("Received Message: " + message);
         String [] parts = new String(message.getPayload()).split("-");
-        System.out.println("Before saving to DB");
         ProductionModel model = new ProductionModel();
         model.setMachineNo(parts[0]);
         model.setCardNo(parts[1]);
         model.setTimestamp(new Timestamp(new Date().getTime()));
-        ProductionRepository p1 = new ProductionRepository();
-//        p1.insertRecord(model);
-        System.out.println("After saving to DB");
+        productionRepository.insertRecord(model);
         this.processingFinishedLatch.countDown();
         if(message.toString().equals("Processed")){
             MqttpublisherFetch("Processed", "operations/fetch");
@@ -89,7 +83,7 @@ public class MQTTProductionCounter implements MqttCallback {
 
     @Override
     public void deliveryComplete(IMqttDeliveryToken token) {
-
+       // client.disconnect(topic);
     }
 
     @Override

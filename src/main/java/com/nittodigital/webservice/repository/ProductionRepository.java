@@ -1,10 +1,9 @@
 package com.nittodigital.webservice.repository;
 
-import com.nittodigital.webservice.businesslogic.MQTTProductionCounter;
 import com.nittodigital.webservice.models.soap.production.Production;
 import com.nittodigital.webservice.models.soap.production.ProductionModel;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
@@ -13,13 +12,11 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import java.sql.Timestamp;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Component
+@Repository
 public class ProductionRepository {
 
     public static final Map<Integer, Production> production = new HashMap<>();
@@ -68,4 +65,5 @@ public class ProductionRepository {
         productionRepository.save(model);
         initData();
     }
+
 }
